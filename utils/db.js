@@ -1,15 +1,12 @@
+// utils/db.js
 import { MongoClient } from 'mongodb';
 
 const client = new MongoClient(process.env.MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+  useUnifiedTopology: true, // This option is still supported
 });
 
 export async function connectToDatabase() {
-    if (client.isConnected()) {
-        return { db: client.db() };
-    }
-
-    await client.connect();
-    return { db: client.db() };
+  // Connect to MongoDB (no need to check isConnected)
+  await client.connect();
+  return { db: client.db() }; // Returns the connected database
 }
