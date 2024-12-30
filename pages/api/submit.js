@@ -1,7 +1,7 @@
 // pages/api/submit.js
 import { MongoClient } from 'mongodb';
 
-const client = new MongoClient(process.env.MONGODB_URI);
+const client = new MongoClient(process.env.MONGODB_URL);
 
 export default async function handler(req, res) {
   console.log('Received request method:', req.method);
